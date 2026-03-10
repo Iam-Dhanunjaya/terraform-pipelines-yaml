@@ -1,1 +1,28 @@
+trigger:
+- main
 
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+
+- stage: TerraformInit
+  jobs:
+  - job: Init
+    steps:
+    - script: echo Initializing Terraform
+      displayName: Terraform Init
+
+- stage: TerraformPlan
+  jobs:
+  - job: Plan
+    steps:
+    - script: echo Running Terraform Plan
+      displayName: Terraform Plan
+
+- stage: TerraformApply
+  jobs:
+  - job: Apply
+    steps:
+    - script: echo Running Terraform Apply
+      displayName: Terraform Apply
