@@ -1,12 +1,16 @@
 name: Terraform Beginner Pipeline
+
 on:
 push:
 branches:
 - main
+
 jobs:
 terraform:
 name: Run Terraform Pipeline
 runs-on: ubuntu-latest
+
+```
 steps:
   - name: Step 1 - Checkout Code
     uses: actions/checkout@v4
@@ -27,3 +31,4 @@ steps:
 
   - name: Step 6 - Terraform Plan
     run: terraform plan
+```
