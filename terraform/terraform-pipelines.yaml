@@ -1,0 +1,29 @@
+name: Terraform Beginner Pipeline
+on:
+push:
+branches:
+- main
+jobs:
+terraform:
+name: Run Terraform Pipeline
+runs-on: ubuntu-latest
+steps:
+  - name: Step 1 - Checkout Code
+    uses: actions/checkout@v4
+
+  - name: Step 2 - Install Terraform
+    uses: hashicorp/setup-terraform@v3
+    with:
+      terraform_version: 1.6.6
+
+  - name: Step 3 - Terraform Init
+    run: terraform init
+
+  - name: Step 4 - Terraform Format Check
+    run: terraform fmt -check
+
+  - name: Step 5 - Terraform Validate
+    run: terraform validate
+
+  - name: Step 6 - Terraform Plan
+    run: terraform plan
