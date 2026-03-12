@@ -5,19 +5,28 @@ pool:
   name: Default
 
 stages:
+
 - stage: TerraformInit
+  displayName: Terraform Init
   jobs:
   - job: Init
     steps:
+    - checkout: self
+
     - pwsh: |
         terraform version
         terraform init
       displayName: Terraform Init
 
+
 - stage: TerraformPlan
+  displayName: Terraform Plan
+  dependsOn: TerraformInit
   jobs:
   - job: Plan
     steps:
+    - checkout: self
+
     - pwsh: |
         terraform plan
       displayName: Terraform Plan
