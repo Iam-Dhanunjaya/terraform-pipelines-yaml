@@ -2,27 +2,19 @@ trigger:
 - main
 
 pool:
-  vmImage: ubuntu-latest
+  name: Default
 
 stages:
-
 - stage: TerraformInit
   jobs:
   - job: Init
     steps:
-    - script: echo Initializing Terraform
+    - script: terraform init
       displayName: Terraform Init
 
 - stage: TerraformPlan
   jobs:
   - job: Plan
     steps:
-    - script: echo Running Terraform Plan
+    - script: terraform plan
       displayName: Terraform Plan
-
-- stage: TerraformApply
-  jobs:
-  - job: Apply
-    steps:
-    - script: echo Running Terraform Apply
-      displayName: Terraform Apply
