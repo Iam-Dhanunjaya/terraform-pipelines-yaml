@@ -16,6 +16,6 @@ stages:
   jobs:
   - job: Plan
     steps:
-    - script: terraform plan
+    - pwsh: terraform plan
     shell : pwsh
       displayName: Terraform Plan
