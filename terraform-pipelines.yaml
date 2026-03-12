@@ -9,12 +9,15 @@ stages:
   jobs:
   - job: Init
     steps:
-    - pwsh: terraform init
+    - pwsh: |
+        terraform version
+        terraform init
       displayName: Terraform Init
 
 - stage: TerraformPlan
   jobs:
   - job: Plan
     steps:
-    - pwsh: terraform plan
+    - pwsh: |
+        terraform plan
       displayName: Terraform Plan
